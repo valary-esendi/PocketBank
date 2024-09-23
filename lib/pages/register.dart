@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // Defining the RegisterPage class, which extends StatelessWidget.
 // This means the page is immutable and doesn't have a state.
 class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
+
   // The build method describes how to display the UI for this page.
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,7 @@ class RegisterPage extends StatelessWidget {
       // Scaffold provides a basic layout structure for the app.
       appBar: AppBar(
         // AppBar is the top bar for the screen, usually containing a title or actions.
-        title: Text(
+        title: const Text(
           'Register', 
           style: TextStyle(color: Colors.white), // Sets the AppBar title text color to white.
         ),
@@ -33,10 +35,10 @@ class RegisterPage extends StatelessWidget {
             ),
             
             // SizedBox adds a vertical gap of 20 pixels between the text and the next element.
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             
             // TextField widget allows the user to input text (in this case, for the email field).
-            TextField(
+            const TextField(
               decoration: InputDecoration(
                 labelText: 'Email', // Placeholder text showing 'Email'.
                 
@@ -53,11 +55,11 @@ class RegisterPage extends StatelessWidget {
             ),
             
             // Another SizedBox for spacing (10 pixels) between the email and password fields.
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             
             // Another TextField widget, this time for password input.
             // `obscureText: true` hides the text input (used for passwords).
-            TextField(
+            const TextField(
               obscureText: true, // Hides the text input for password fields.
               decoration: InputDecoration(
                 labelText: 'Password', // Placeholder text showing 'Password'.
@@ -75,7 +77,7 @@ class RegisterPage extends StatelessWidget {
             ),
             
             // A gap (20 pixels) between the password field and the Register button.
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             
             // ElevatedButton is a clickable button that performs an action when pressed.
             ElevatedButton(
@@ -91,7 +93,7 @@ class RegisterPage extends StatelessWidget {
               ),
               
               // The text shown inside the button.
-              child: Text('Register'),
+              child: const Text('Register'),
             ),
           ],
         ),
