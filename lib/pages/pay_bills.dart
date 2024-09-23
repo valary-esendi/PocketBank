@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart'; // Import Flutter Material package for UI components
 
 // Defining the PayBillsPage class
-class PayBillsPage extends StatelessWidget {
+class PayBillsPage extends StatefulWidget {
+  @override
+  _PayBillsPageState createState() => _PayBillsPageState();
+}
+
+class _PayBillsPageState extends State<PayBillsPage> {
   // Controller for the bill number input field
   final TextEditingController billNumberController = TextEditingController();
   // Controller for the account number input field
   final TextEditingController accountNumberController = TextEditingController();
+  final TextEditingController amountController = TextEditingController();
 
   // List of bill types available for selection
   final List<String> billTypes = ['DSTV', 'Water', 'Netflix', 'Showmax'];
@@ -30,8 +36,10 @@ class PayBillsPage extends StatelessWidget {
             DropdownButton<String>(
               value: selectedBillType, // Currently selected bill type
               onChanged: (String? newValue) {
-                // Update the selected bill type when a new option is selected
-                selectedBillType = newValue!;
+                setState(() {
+                  // Update the selected bill type when a new option is selected
+                  selectedBillType = newValue!;
+                });
               },
               items: billTypes.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
@@ -66,15 +74,25 @@ class PayBillsPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.0), // Add space between the fields and button
+            // Input field for the amount
+            TextField(
+              controller: amountController, // Connect the controller to the input field
+              decoration: InputDecoration(
+                labelText: 'Amount', // Label shown in the input field
+                border: OutlineInputBorder(), // Outline border style for the input field
+              ),
+            ),
+            SizedBox(height: 20.0), // Add space between the fields and button
             // Button to initiate the payment process
             ElevatedButton(
               onPressed: () {
                 // Action to perform when the button is pressed
                 String billNumber = billNumberController.text; // Get the bill number from the input field
                 String accountNumber = accountNumberController.text; // Get the account number from the input field
+                String amount = amountController.text;
 
                 // Print details to the console (for debugging purposes)
-                print('Paying $selectedBillType with bill number $billNumber from account $accountNumber');
+                print('Paying $selectedBillType with bill number $billNumber from account $accountNumber amount $amount' );
                 // Here you would add your logic to process the payment, e.g., API call
               },
               child: Text('Pay Bill'), // Text displayed on the button
